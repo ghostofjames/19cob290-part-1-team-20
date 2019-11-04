@@ -8,37 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <style>
-    .topbar {
-        grid-column: 1 / span 2;
-        grid-row: 1 / span 1;
-        background-color: blue;
-    }
-    .sidebar {
-        grid-column: 1 / span 1;
-        grid-row: 2 / span 1;
-        display: flex;
-        flex-direction: column;
-    }
-    .problem-list-params {
-        flex-basis: 10%;
-        background-color: red;
-    }
-    .problem-list {
-        flex-basis: 90%;
-        background-color: pink;
-    }
-    .main {
-        grid-column: 2 / span 1;
-        grid-row: 2 / span 1;
-        background-color: yellow;
-    }
-    .grid-container {
-        display: grid;
-        grid-template-rows: 10vh 90vh;
-        grid-template-columns: 25vw 75vw;
-    }
-    </style>
+    <style></style>
     <script>
         $(document).ready(function() {
             $('#logoutButton').click(function() {
@@ -46,23 +16,61 @@
 
             })
         });
-
     </script>
 </head>
 
-<body class="grid-container">
-    <div id="topbar" class="topbar d-flex">
-        <p class="mr-auto">Welcome operator, {user}</p>
-        <button class="btn btn-primary" id=logoutButton>Logout</button>
-    </div>
-    <div id="sidebar" class="sidebar">
-        <div id="problem-list-params" class="problem-list-params">
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="">Helpdesk System</a>
+        <span class="navbar-text mr-auto">Welcome {usertype}, {username}</span>
+        <div class="btn-group">
+            <button class="btn btn-light" id=logoutButton>Sign Out</button>
+            <button class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
         </div>
-        <div id="problem-list" class="problem-list">
+    </nav>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Main content goes here -->
+                Main Content
+            </div>
         </div>
-    </div>
-    <div id="main" class="main">
-    </div>
-</body>
-
-</html>
+    </main>
+</body></html>
