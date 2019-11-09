@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Example Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style>
+        #problemList {
+            margin-left: -15px;
+            margin-right: -15px;
+            /* Temporary */
+            max-height: 600px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $('#logoutButton').click(function() {
+                window.location.replace('login.html');
+
+            })
+
+            $('#filterForm').on('submit', function(e) {
+                var data = $(this).serializeArray().reduce(function(obj, item) {
+                    // https://stackoverflow.com/a/24012884
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+
+                console.log(data);
+
+                e.preventDefault(); // Prevent normal form submission
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="">Helpdesk System</a>
+        <span class="navbar-text mr-auto">Welcome {usertype}, {username}</span>
+        <div class="btn-group">
+            <button class="btn btn-light" id=logoutButton>Sign Out</button>
+            <button class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"><span class="sr-only">Toggle Dropdown</span></button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-4">
+                <form id="filterForm">
+                    <div class="form-group">
+                        <input class="form-control" type="search" name="searchText" placeholder="Search">
+                    </div>
+
+                    <div class="form-group">
+                        <select class="custom-select" name="problemType">
+                            <option selected>Select Problem Type</option>
+                            <option value="a">Type a</option>
+                            <option value="b">Type b</option>
+                            <option value="c">Type c</option>
+                            <option value="d">Type d</option>
+                            <option value="e">Type e</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="hidden" name="checkboxSolved" value="false">
+                            <input class="custom-control-input" type="checkbox" id="checkboxSolved" name="checkboxSolved" value="true">
+                            <label class="custom-control-label" for="checkboxSolved">Solved</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline">
+                            <input type="hidden" name="checkboxUnsolved" value="false">
+                            <input class="custom-control-input" type="checkbox" id="checkboxUnsolved" name="checkboxUnsolved" value="true">
+                            <label class="custom-control-label" for="checkboxUnsolved">Unsolved</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block" type="submit" value="Filter">
+                    </div>
+
+                </form>
+
+                <div class="list-group list-group-flush overflow-auto" id="problemList">
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Problem a</h5>
+                            <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1">Problem Description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                        <small>Problem Type</small>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <!-- Main content goes here -->
+                <form>
+				Problem ID:
+				<input type="text" name="Problemid">
+				<br>
+				</form>
+				<br>
+				
+				<form>
+				Problem Type:
+				  <select name="Problem Type">
+					<option value="fill">Type A</option>
+					<option value="fill">Type B</option>
+					<option value="fill">Type C</option>
+				  </select>
+				</form>
+				<br>
+				
+				<style type="text/css">
+					#bodycontent label { padding-left:100px }
+
+				</style>
+				
+				<form >
+				<div id="bodycontent" style="float: left" >
+				Hardware:
+				  <select  name="Hardware">
+					<option value="fill">Hardware A</option>
+					<option value="fill">Hardware B</option>
+					<option value="fill">Hardware C</option>
+				  </select>
+				  </div>
+				</form>
+				
+				
+				<form>
+				<div id="bodycontent" style="float:left" >
+				<label for="software">Software:</label>
+				  <select  name="Software" id="software">
+					<option value="fill">Software A</option>
+					<option value="fill">Software B</option>
+					<option value="fill">Software C</option>
+				  </select>
+				  </div>
+				</form>
+				
+				<div style="clear:both"> </div>
+				<br>
+				
+				<form>
+				<div id="Save" style="float:left">
+				<div style="float: left">
+				Notes:
+				</div>
+				<textarea style="float:left" rows="4" cols="60">
+				</textarea>
+				<div style="clear:both"></div>
+				</div>
+				</form>
+				
+				<style type="text/css">
+					#Save label { padding-left:50px }
+					input[id='save'] {
+					background-color=#FFFFFF
+						width:60px;
+						height:40px;
+						border-radius:15px;
+					}​
+
+				</style>
+				
+				<form>
+				<div id="Save" style="float:left" >
+				<label for="save"></label>
+				  <input type="submit" value="Save Changes" id="save">
+				  </div>
+				</form>
+				<div style="clear:both"> </div>
+			
+				<br>
+				<form>
+				Solution:
+				<input type="radio" name="solution"  value="unique">Unique
+				<input type="radio" name="solution" value="previous">Previous
+				<input type="radio" name="solution" value="standard">Standard
+				</form>
+				<br>
+				
+				<form>
+			`	<div id="Submit" style="float:left">
+				<div style="float: left">
+				Details:
+				</div>
+				<textarea style="float:left" rows="4" cols="60">
+				</textarea>
+				<div style="clear:both"></div>
+				</div>
+				</form>
+				<br>
+				
+				<style type="text/css">
+					#Submit label { padding-left:50px }
+					input[id='submit'] {
+					background-color=#FFFFFF
+						width:60px;
+						height:40px;
+						border-radius:15px;
+					}​
+
+				</style>
+				
+				<form>
+				<div id="Submit" style="float:left" >
+				<label for="submit"></label>
+				  <input type="submit" value="Submit Solution" id="submit">
+				  </div>
+				</form>
+				<div style="clear:both"> </div>
+			
+			
+            </div>
+        </div>
+    </main>
+</body></html>
