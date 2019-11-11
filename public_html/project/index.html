@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+
+    <script>
+        // HARDCODED LOGIN CREDENTIALS
+        const USERS = [{
+                username: 'op1',
+                password: 'pass1',
+                type: 'operator'
+            },
+            {
+                username: 'sp1',
+                password: 'pass2',
+                type: 'specialist'
+            },
+        ];
+
+        $(document).ready(function() {
+
+            $('#loginForm').on('submit', function(e) {
+                var data = $(this).serializeArray().reduce(function(obj, item) {
+                    // https://stackoverflow.com/a/24012884
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+
+                console.log("Input:", data);
+
+                var result = validateLogin(data.username, data.password);
+
+                console.log("User type:", result);
+
+                if (result == false) {
+                    // Invalid login
+                    $('#invalidLoginAlert').collapse('show');
+
+                } else {
+                    // Valid login
+                    if (result.type == 'operator') {
+                        // Is an operator
+                        alert('Welcome operator');
+                        window.location.replace('operator/main');
+
+                    } else if (result.type == 'specialist') {
+                        // Is a specialist
+                        alert('Welcome specialist');
+                        window.location.replace('specialist/main');
+                    };
+                };
+
+                e.preventDefault(); // Prevent normal form submission
+
+            });
+
+            function validateLogin(username, password) {
+                //FUTURE: add proper validation - database request would go here
+                var user = USERS.filter(function(u) {
+                    return (u.username == username && u.password == password);
+                });
+
+                if (user === undefined || user.length == 0) {
+                    console.log("No matching user")
+                    return false
+
+                } else {
+                    console.log("Matching user:", user[0]);
+                    return {
+                        type: user[0].type
+                    };
+
+                };
+            };
+
+        });
+    </script>
+
+    <style>
+        body {
+            background-color: #eee;
+        }
+
+        .form-login {
+            max-width: 330px;
+            padding: 15px;
+            margin: 40px auto;
+            background-color: #ffffff
+        }
+    </style>
+</head>j
+
+<body>
+    <div class="container">
+        <form class="form-login border rounded" id="loginForm" name="loginForm">
+            <h1 class="h3 mb-0 text-center">Helpdesk System</h1>
+            <p class="text-center text-muted">Please Sign In</p>
+            <div class="form-group">
+                <label for="username" class="sr-only">Username</label>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Username" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password" class="sr-only">Password</label>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="alert alert-danger collapse" id="invalidLoginAlert">Invalid Details. Please try again.</div>
+
+            <input class="btn btn-primary btn-block" type="submit" value="Sign In">
+        </form>
+    </div>
+</body></html>
